@@ -1,5 +1,6 @@
 - name: installing docker
 - hosts: client
+  become: true
   tasks:
    - name: setting the Docker yum repo
      yum_repository:
