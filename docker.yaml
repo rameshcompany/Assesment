@@ -1,0 +1,31 @@
+- name: installing docker
+- hosts: client
+  tasks:
+   - name: setting the Docker yum repo
+     yum_repository:
+         name: "docker_yum"
+         description: "configure Docker"
+         baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+         gpgcheck: no
+         
+   - name: "Docker installation"
+     command: "yum install docker-ce --nobest -y"
+     
+   - name: "starting the docker services"
+     service:
+          name: docker
+          state: started
+          enabled: yes
+          
+   - pip:
+          name: docker-py
+          
+   - name: "pulling the nginx image from the docker hub"
+     docker_container: 
+           name: "nginx_container"
+           image: nginx
+           pull: yes
+           ports:
+             - "8000:80"
+           detach: yes
+           state: started
