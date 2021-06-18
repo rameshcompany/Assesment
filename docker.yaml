@@ -6,7 +6,7 @@
      yum_repository:
          name: "docker_yum"
          description: "configure Docker"
-         baseurl: https://download.docker.com/linux/ubuntu/18.04/x86_64/stable/
+         baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
          gpgcheck: no
          
    - name: "Docker installation"
