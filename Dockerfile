@@ -3,8 +3,7 @@ LABEL owner="RAMESH"
 LABEL Description="creating dockerfile" 
 WORKDIR /webapp/config/
 RUN yum --update && \
-    yum install curl && \
-    yum install git
+    yum install curl  git 
 RUN python -m pip install flask datetime pytz
 COPY rest.py .
 EXPOSE 8080
